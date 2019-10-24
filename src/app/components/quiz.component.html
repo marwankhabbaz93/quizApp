@@ -1,0 +1,34 @@
+<div class="container">
+
+
+
+  <div *ngFor="let question of questions ; let j = index"  class="card">
+    <div *ngIf="j==currIndex" class="card-block">
+
+      <h3 [innerHTML]="question.question"></h3>
+      <p [innerHTML]="question.category"></p>
+      <form>
+        <fieldset>
+
+          <div class="" *ngFor="let radio of question.answers ; let i = index">
+            <label class="custom-control custom-radio">
+           <input id="radioStacked-{{i}}" name="radio-stacked"  (change)="CheckAnswer(radio, $event)" type="radio" class="custom-control-input"  >
+           <span class="custom-control-indicator"></span>
+           <span class="custom-control-description" [innerHTML]="radio" ></span>
+         </label>
+
+          </div>
+        </fieldset>
+
+      </form>
+
+    </div>
+
+  </div>
+
+  <div class="score" *ngIf="showScore" >
+    <h1>You Scored</h1>
+    <h1>{{score}}</h1>
+  </div>
+
+</div>
